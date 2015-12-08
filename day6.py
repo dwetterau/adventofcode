@@ -1,11 +1,11 @@
 __author__ = 'david'
 
 def op_and_coords(line):
-    op = "toggle"
+    op = "toggle",
     if "on" in line:
-        op = "on"
+        op = "on",
     elif "off" in line:
-        op = "off"
+        op = "off",
 
     coords = line.split(" through ")
     coord1 = coords[0].split(" ")[-1]
