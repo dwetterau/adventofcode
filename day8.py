@@ -305,6 +305,8 @@ lines = [
 
 import codecs
 
+import re
+
 escape_dict={'\a':r'\a',
            '\b':r'\b',
            '\c':r'\c',
@@ -331,14 +333,13 @@ def apply_line(line):
     # len(line) + 2 - len(codecs.decode(line, "unicode_escape"))
 
     # Part 2:
-    encode = lambda x: codecs.encode(x, "unicode_escape")
-    return len(encode(line)) + 4 - len(line)
+    return 4 + sum(1 for x in line if x == "\\") + sum(1 for x in line if x in escape_dict)
 
 assert apply_line(r"") == 4
 assert apply_line(r"abc") == 4
 assert apply_line(r"aaa\"aaa") == 6
 assert apply_line(r"\x27") == 5
-assert apply_line(r"\\x") == 4
+assert apply_line(r"\\x") == 6
 total = 0
 for line in lines:
     total += apply_line(line)
