@@ -47,8 +47,6 @@ c = 0
 for indices in combinations(r, s - 1):
     # The indices tell us where the dividers of the bins are
     c += 1
-    if (c % 10) == 0:
-        print(c)
     cur = 0
     i = 0
     while i < 5:
@@ -74,6 +72,8 @@ for indices in combinations(r, s - 1):
     while i < 4:
         prod *= max(0, accum[i])
         i += 1
+    if prod > best:
+        print(indices)
     best = max(best, prod)
 
 print(best)
