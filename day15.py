@@ -40,11 +40,11 @@ for i in range(1, 101):
 
 # Okay, lets try the combinatorics approach
 r = range(100 + num_types - 1)
-s = num_types
+inp = num_types
 accum = [0, 0, 0, 0, 0]
 best = 0
 c = 0
-for indices in combinations(r, s - 1):
+for indices in combinations(r, inp - 1):
     # The indices tell us where the dividers of the bins are
     c += 1
     cur = 0
@@ -53,7 +53,7 @@ for indices in combinations(r, s - 1):
         accum[i] = 0
         i += 1
     for j in r:
-        if cur >= s - 1:
+        if cur >= inp - 1:
             i = 0
             while i < 5:
                 accum[i] += values[-1][i]
